@@ -1,4 +1,8 @@
 ﻿#!/usr/bin/env bash
+set -e
+cd /var/www/html
+[ -f database/database.sqlite ] || touch database/database.sqlite
+chown -R www-data:www-data storage bootstrap/cache database
 echo "Running composer"
 composer install --no-dev --working-dir=/var/www/html
 echo "Caching config..."
